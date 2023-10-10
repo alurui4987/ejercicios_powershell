@@ -20,8 +20,7 @@ foreach($emple in $empleados){
     $empleNombre = $emple.nombre
     $empleApellido = $emple.apellido
 
-    New-ADUser -Name "$empleNombre.$empleApellido" -Path "OU=$depa,OU=Empresa,DC=EMPRESA,DC=LOCAL" -UserPrincipalName "$empleNombre.$empleApellido@EMPRESA.LOCAL" 
-    -AccountPassword (ConvertTo-SecureString "aso2021." -AsPlainText -Force) -GivenName $empleNombre -Surname $empleApellido -ChangePasswordAtLogon $true -Enabled $true
+    New-ADUser -Name "$empleNombre.$empleApellido" -Path "OU=$depa,OU=Empresa,DC=EMPRESA,DC=LOCAL" -UserPrincipalName "$empleNombre.$empleApellido@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "aso2021." -AsPlainText -Force) -GivenName $empleNombre -Surname $empleApellido -ChangePasswordAtLogon $true -Enabled $true
 
     Add-ADGroupMember -Identity $depa -Members "$empleNombre.$empleApellido"
 }
